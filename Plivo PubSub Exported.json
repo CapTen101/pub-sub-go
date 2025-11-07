@@ -1,0 +1,301 @@
+{
+  "name": "Plivo PubSub Demo",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "health",
+      "filename": "health",
+      "items": [
+        {
+          "type": "http",
+          "name": "health",
+          "filename": "request.bru",
+          "seq": 4,
+          "settings": {
+            "encodeUrl": true,
+            "timeout": 0
+          },
+          "tags": [],
+          "request": {
+            "url": "https://pub-sub-go.onrender.com/health",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "stats",
+      "filename": "stats",
+      "items": [
+        {
+          "type": "http",
+          "name": "stats",
+          "filename": "request.bru",
+          "seq": 5,
+          "settings": {
+            "encodeUrl": true,
+            "timeout": 0
+          },
+          "tags": [],
+          "request": {
+            "url": "https://pub-sub-go.onrender.com/stats",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "topics",
+      "filename": "topics",
+      "items": [
+        {
+          "type": "folder",
+          "name": "list-topics",
+          "filename": "list-topics",
+          "items": [
+            {
+              "type": "http",
+              "name": "list-topics",
+              "filename": "request.bru",
+              "seq": 2,
+              "settings": {
+                "encodeUrl": true,
+                "timeout": 0
+              },
+              "tags": [],
+              "request": {
+                "url": "https://pub-sub-go.onrender.com/topics",
+                "method": "GET",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "mode": "none",
+                  "formUrlEncoded": [],
+                  "multipartForm": [],
+                  "file": []
+                },
+                "script": {},
+                "vars": {},
+                "assertions": [],
+                "tests": "",
+                "docs": "",
+                "auth": {
+                  "mode": "inherit"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "folder",
+          "name": "delete-topic",
+          "filename": "delete-topic",
+          "items": [
+            {
+              "type": "http",
+              "name": "delete-topic",
+              "filename": "request.bru",
+              "seq": 3,
+              "settings": {
+                "encodeUrl": true,
+                "timeout": 0
+              },
+              "tags": [],
+              "request": {
+                "url": "http://localhost:8080/topics/orders",
+                "method": "DELETE",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "mode": "none",
+                  "formUrlEncoded": [],
+                  "multipartForm": [],
+                  "file": []
+                },
+                "script": {},
+                "vars": {},
+                "assertions": [],
+                "tests": "",
+                "docs": "",
+                "auth": {
+                  "mode": "inherit"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "folder",
+          "name": "create-topic",
+          "filename": "create-topic",
+          "items": [
+            {
+              "type": "http",
+              "name": "create-topic",
+              "filename": "request.bru",
+              "seq": 1,
+              "settings": {
+                "encodeUrl": true,
+                "timeout": 0
+              },
+              "tags": [],
+              "request": {
+                "url": "https://pub-sub-go.onrender.com/topics",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "mode": "json",
+                  "json": "{\n  \"name\": \"first topic\"\n}",
+                  "formUrlEncoded": [],
+                  "multipartForm": [],
+                  "file": []
+                },
+                "script": {},
+                "vars": {},
+                "assertions": [],
+                "tests": "",
+                "docs": "",
+                "auth": {
+                  "mode": "inherit"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "ws-subscribe",
+      "filename": "ws-subscribe",
+      "items": [
+        {
+          "type": "ws",
+          "name": "subscribe",
+          "filename": "request.bru",
+          "seq": 6,
+          "settings": {},
+          "tags": [],
+          "request": {
+            "url": "ws://pub-sub-go.onrender.com",
+            "method": "",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "ws",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": [],
+              "ws": [
+                {
+                  "name": "subscribe request",
+                  "type": "json",
+                  "content": "{\n  \"type\": \"subscribe\",\n  \"topic\": \"orders\",\n  \"client_id\": \"s1\",\n  \"last_n\": 3,\n  \"request_id\": \"sub-req-1\"\n}"
+                }
+              ]
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "ws-publish",
+      "filename": "ws-publish",
+      "items": [
+        {
+          "type": "ws",
+          "name": "publish",
+          "filename": "request.bru",
+          "seq": 7,
+          "settings": {},
+          "tags": [],
+          "request": {
+            "url": "ws://pub-sub-go.onrender.com",
+            "method": "",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "ws",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": [],
+              "ws": [
+                {
+                  "name": "publish request",
+                  "type": "json",
+                  "content": "{\n  \"type\": \"publish\",\n  \"topic\": \"first topic\",\n  \"message\": {\n    \"id\": \"msg-1\",\n    \"payload\": {\n      \"order_id\": \"ORD-123\",\n      \"amount\": 99.5\n    }\n  },\n  \"request_id\": \"pub-req-1\"\n}"
+                }
+              ]
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "type": "collection",
+    "version": "1",
+    "name": "Plivo PubSub Demo",
+    "description": "Bruno Requests for Pub/Sub Assignment",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0016012191772460938,
+    "filesCount": 7
+  }
+}
