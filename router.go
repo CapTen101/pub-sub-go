@@ -20,8 +20,10 @@ func setupRouter() http.Handler {
 
 	// default
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		writeJSON(w, http.StatusOK, map[string]string{"message": "plivo pubsub up"})
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte("OK"))
 	})
+
 
 	protected := requireAPIKey(mux)
 	return loggingMiddleware(corsMiddleware(protected))
