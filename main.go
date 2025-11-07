@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	addr := getEnv("ADDR", ":8080")
+	addr := ":" + getEnv("PORT", "8080")
 	r := setupRouter()
 
 	srv := &http.Server{
