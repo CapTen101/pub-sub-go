@@ -2,7 +2,9 @@
 
 This project implements a lightweight **Publish/Subscribe messaging system** with WebSocket fan-out and REST topic management.
 It is designed to demonstrate **concurrency, streaming delivery, backpressure handling, replay buffers, graceful shutdown, and operational observability** — typical concerns in distributed system design.
-API Collection attached for Bruno Client. Please download the collection as zip + extract it + open bruno and select 'Open Collection'
+
+
+Note: API Collection attached for Bruno Client. Please download the collection as zip + extract it + open bruno and select 'Open Collection'
 
 ## Core Features
 
