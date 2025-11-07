@@ -4,7 +4,7 @@ This project implements a lightweight **Publish/Subscribe messaging system** wit
 It is designed to demonstrate **concurrency, streaming delivery, backpressure handling, replay buffers, graceful shutdown, and operational observability** — typical concerns in distributed system design.
 
 
-Note: API Collection attached for Bruno Client. Please download the collection as zip + extract it + open bruno and select 'Open Collection'
+Note: API Collection JSON attached for Bruno Client. Please download the `Plivo PubSub Exported` JSON file and import using Bruno UI via 'Import Collection option'
 
 ## Core Features
 
