@@ -4,5 +4,5 @@ services:
     env: docker
     plan: free
     autoDeploy: true
+    port: 8080
     healthCheckPath: /health
-    httpPort: 8080
