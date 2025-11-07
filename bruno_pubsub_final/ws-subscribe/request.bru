@@ -1,0 +1,25 @@
+meta {
+  name: subscribe
+  type: ws
+  seq: 6
+}
+
+ws {
+  url: ws://pub-sub-go.onrender.com
+  body: ws
+  auth: none
+}
+
+body:ws {
+  name: subscribe request
+  type: json
+  content: '''
+    {
+      "type": "subscribe",
+      "topic": "orders",
+      "client_id": "s1",
+      "last_n": 3,
+      "request_id": "sub-req-1"
+    }
+  '''
+}

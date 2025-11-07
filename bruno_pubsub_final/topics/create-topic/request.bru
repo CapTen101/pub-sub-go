@@ -1,0 +1,22 @@
+meta {
+  name: create-topic
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://pub-sub-go.onrender.com/topics
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "first topic"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

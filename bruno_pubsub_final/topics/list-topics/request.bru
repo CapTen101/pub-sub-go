@@ -1,0 +1,16 @@
+meta {
+  name: list-topics
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://pub-sub-go.onrender.com/topics
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

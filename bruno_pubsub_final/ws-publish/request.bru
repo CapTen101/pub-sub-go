@@ -1,0 +1,30 @@
+meta {
+  name: publish
+  type: ws
+  seq: 7
+}
+
+ws {
+  url: ws://pub-sub-go.onrender.com
+  body: ws
+  auth: none
+}
+
+body:ws {
+  name: publish request
+  type: json
+  content: '''
+    {
+      "type": "publish",
+      "topic": "first topic",
+      "message": {
+        "id": "msg-1",
+        "payload": {
+          "order_id": "ORD-123",
+          "amount": 99.5
+        }
+      },
+      "request_id": "pub-req-1"
+    }
+  '''
+}
