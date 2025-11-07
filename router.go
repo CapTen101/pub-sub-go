@@ -86,16 +86,21 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func requireAPIKey(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		expected := getEnv("API_KEY", "")
-		if expected == "" { // auth disabled
-			next.ServeHTTP(w, r)
-			return
-		}
-		if r.Header.Get("X-API-Key") != expected {
-			writeError(w, http.StatusUnauthorized, "UNAUTHORIZED", "invalid api key")
-			return
-		}
-		next.ServeHTTP(w, r)
-	})
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+        // Allow unauthenticated health & root requests (needed for Render)
+        if r.URL.Path == "/health" || r.URL.Path == "/" {
+            next.ServeHTTP(w, r)
+            return
+        }
+
+        expected := getEnv("API_KEY", "")
+        if expected != "" && r.Header.Get("X-API-Key") != expected {
+            http.Error(w, "unauthorized", http.StatusUnauthorized)
+            return
+        }
+
+        next.ServeHTTP(w, r)
+    })
 }
+
