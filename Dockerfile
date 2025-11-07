@@ -13,6 +13,7 @@ FROM gcr.io/distroless/base-debian12
 COPY --from=build /bin/app /app
 
 EXPOSE 8080
+ENV PORT=8080
 ENV ADDR=:8080
 
 ENTRYPOINT ["/app"]
